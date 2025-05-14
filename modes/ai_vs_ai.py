@@ -1,4 +1,4 @@
-from ai.alpha_beta import alpha_beta
+from ai.alpha_beta import alpha_beta_pruning
 from ai.minimax import minimax
 from game.board import Board
 from game.rules import check_winner
@@ -16,11 +16,12 @@ def ai_vs_ai():
         if curr_player == ai_1:
             print("AI_1  is thinking...")
             _, move = minimax(board, depth=2, maximizing_player=True, player=ai_1, opponent=ai_2)
-        # else:
-        #     print("AI_2 is thinking...")
-        #     _, move = alpha_beta(board, depth=2, alpha=float('-inf'), beta=float('inf'),
-        #                          maximizing_player=True, player=ai_2, opponent=ai_1)
-            
+        else:
+           print("AI_2 is thinking...")
+        _, row, col = alpha_beta_pruning(board, depth=2, alpha=float('-inf'), beta=float('inf'),is_maximizing=True, max_player=ai_2,min_player=ai_1)
+        move = (row, col)
+
+
         if move:
             board.place_move(*move, curr_player)
             print(f"{curr_player} played: {move}")

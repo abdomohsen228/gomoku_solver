@@ -23,3 +23,7 @@ class Board:
 
     def get_empty_cells(self):
         return [(r, c) for r in range(self.size) for c in range(self.size) if self.grid[r][c] == '.']
+    
+    def remove_move(self, row, col):
+        if 0 <= row < self.size and 0 <= col < self.size:
+            self.grid[row][col] = '.'
