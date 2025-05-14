@@ -9,7 +9,8 @@ def main():
     # print(b.get_empty_cells())
     # t  = test_game();
     # human_vs_ai()
-    ai_vs_ai()
+    # ai_vs_ai()
+    human_vs_ai()
 
 
 if __name__ == "__main__":
