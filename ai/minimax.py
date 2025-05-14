@@ -1,4 +1,5 @@
 import math
+from ai.boardEvaluator import evaluate_board
 from game.rules import check_winner
 
 def minimax(board, depth, maximizing_player, player, opponent):
@@ -7,7 +8,8 @@ def minimax(board, depth, maximizing_player, player, opponent):
     if check_winner(board.grid, opponent):
         return depth - 10, None
     if not board.get_empty_cells() or depth == 0:
-        return 0, None
+        eval_score = evaluate_board(board.grid, player)
+        return eval_score, None
 
     best_move = None
 
